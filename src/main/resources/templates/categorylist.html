@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>类别列表</title>
+</head>
+<body>
+<a th:href="@{/categoryadd}">新增</a>
+<table>
+    <tr>
+        <th>类别编号</th>
+        <th>类别名称</th>
+        <th>操&nbsp;&nbsp;作</th>
+    </tr>
+    <!--不分页遍历-->
+    <!--<tr th:each="item : ${list}">-->
+    <!--分页遍历-->
+    <tr th:each="item : ${page.content}">
+        <td th:text="${item.categoryid}">id</td>
+        <td th:text="${item.categoryname}">name</td>
+        <td>
+            <a th:href="@{/categoryedit(categoryid=${item.categoryid})}">编辑</a>&nbsp;&nbsp;
+            <a th:href="@{/categorydele(categoryid=${item.categoryid})}">删除</a>
+        </td>
+    </tr>
+</table>
+<div>
+    <a th:href="@{/categorylist(start=0)}">[首页]</a>&nbsp;&nbsp;
+    <a th:if="${not page.isFirst()}" th:href="@{/categorylist(start=${page.number-1})}">[上页]</a>&nbsp;&nbsp;
+    <a th:if="${not page.isLast()}" th:href="@{/categorylist(start=${page.number+1})}">[下页]</a>&nbsp;&nbsp;
+    <a th:href="@{/categorylist(start=${page.totalPages-1})}">[末页]</a>
+</div>
+</body>
+</html>

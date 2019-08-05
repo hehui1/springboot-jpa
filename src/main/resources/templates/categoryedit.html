@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>类别编辑</title>
+</head>
+<body>
+<form action="categoryupdate" method="post">
+    <input type="hidden" id="txtCategoryid" name="categoryid" th:field="${category.categoryid}"/><br/>
+       <label for="txtCategoryname">类别名称：</label>
+        <input type="text" id="txtCategoryname" name="categoryname" th:field="${category.categoryname}"/><br/>
+        <input type="submit" value="提交">
+</form>
+</body>
+</html>
